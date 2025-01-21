@@ -43,7 +43,7 @@ export class MachineService {
     if (params.name) where['name'] = Like(`%${params.name}%`);
     if (params.status) where['status'] = params.status;
 
-    return await this.machineRepository.find({ where });
+    return await this.machineRepository.find({ where, relations:['logs'] });
   }
 
   async findOne(id: string) {

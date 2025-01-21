@@ -3,5 +3,6 @@ export enum MachineStatus {
   MAINTENANCE = 'maintenance',
   OFFLINE = 'offline',
   ERROR = 'error',
+  ALERT = 'alert',
   DESCONTINUED = 'descontinued',
 }

@@ -43,11 +43,27 @@ export class TelimetryService {
     try {
       const jobName = `telemetry_${machineId}`;
       const job = this.schedulerRegistry.getCronJob(jobName);
+      const machine = this.simulatedMachines.get(machineId);
 
       job.stop();
+      
+
+      if (!machine) return;
+
+      const telemetryData = {
+        machineId,
+        status: [MachineStatus.OFFLINE],
+        location: machine.location,
+        latitude: machine.latitude,
+        longitude: machine.longitude
+      };
+
+      this.telemetryGateway.handleTelemetryUpdate(null, telemetryData);
 
       this.schedulerRegistry.deleteCronJob(jobName);
       this.simulatedMachines.delete(machineId);
+
+      
 
       return `Stopped telemetry simulation for machine ${machineId}`;
     } catch (error) {
@@ -71,7 +87,6 @@ export class TelimetryService {
       location: machine.location,
       latitude: machine.latitude + (Math.random() - 0.5) * locationVariation,
       longitude: machine.longitude + (Math.random() - 0.5) * locationVariation
-
     };
 
     this.telemetryGateway.handleTelemetryUpdate(null, telemetryData);

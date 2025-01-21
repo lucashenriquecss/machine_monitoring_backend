@@ -1,8 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus, Query, UseGuards } from '@nestjs/common';
 import { MachineService } from './machine.service';
 import { CreateMachineDto } from './dto/create-machine.dto';
 import { UpdateMachineDto } from './dto/update-machine.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Role } from 'src/utils/jwt/roles.decorator';
+import { Roles } from 'src/users/entities/user-roles.enum';
+import { JwtAuthGuard } from 'src/utils/jwt/jwt-auth.guard';
+import { RolesGuard } from 'src/utils/jwt/roles.guard';
 
 @Controller('api/v1/machine')
 export class MachineController {
@@ -10,6 +14,8 @@ export class MachineController {
 
   @ApiOperation({ summary: 'Cadastramento de maquinários' })
   @ApiResponse({ status: 201, description: 'Criado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
   @Post()
   async create(@Body() createMachineDto: CreateMachineDto) {
     try {
@@ -26,6 +32,8 @@ export class MachineController {
 
   @ApiOperation({ summary: 'Busca de maquinários' })
   @ApiResponse({ status: 200, description: 'Consultado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
   @Get()
   async findAll(@Query() params) {
     try {
@@ -42,6 +50,8 @@ export class MachineController {
 
   @ApiOperation({ summary: 'Busca detalhada de maquinário' })
   @ApiResponse({ status: 200, description: 'Consultado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {
@@ -58,6 +68,8 @@ export class MachineController {
 
   @ApiOperation({ summary: 'Atualização de maquinários' })
   @ApiResponse({ status: 204, description: 'Atualizado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateMachineDto: UpdateMachineDto) {
     try {
