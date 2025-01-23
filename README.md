@@ -26,13 +26,12 @@ Este projeto é uma API RESTful para gerenciar máquinas industriais, permitindo
 
 ## 🛠 Ferramentas e Tecnologias
 
-- **Backend**: Node.js, NestJS, Express.js
+- **Backend**: Node.js, NestJS
 - **Banco de Dados**: PostgreSQL (utilizando TypeORM)
-- **WebSockets**: `@nestjs/websockets` ou `socket.io`
-- **Simulação de Telemetria**: Scheduler (`setInterval` ou biblioteca `node-schedule`)
+- **WebSockets**: `@nestjs/websockets`
+- **Simulação de Telemetria**: Scheduler 
 - **Documentação**: Swagger (OpenAPI)
-- **Testes**: Jest, Supertest
-- **Gerenciamento de Dependências**: npm ou yarn
+- **Gerenciamento de Dependências**: npm
 
 ---
 
@@ -81,5 +80,23 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/api-gestao-maquinas.git
-   cd api-gestao-maquinas
+   git clone https://github.com/lucashenriquecss/machine_monitoring_backend.git
+   
+2. Instalar dependências:
+
+   ```bash
+   npm install
+
+3. Crie um arquivo .env naa raiz do projeto:
+
+   ```bash
+     DATABASE_URL=seu-database-url
+     JWT_SECRET=sua-chave-secreta
+4. Iniciar servidor
+   ```bash
+   npm run start:dev
+
+### Documentação
+http://localhost:3000/docs
+
+
