@@ -20,8 +20,11 @@ Este projeto é uma API RESTful para gerenciar máquinas industriais, permitindo
    - Filtrar máquinas pelo status (operando, manutenção, desligada).
 
 4. **Simulação de Dados de Telemetria**  
-   - Geração automática de dados de telemetria (ex.: status e localização) a cada 5 segundos.
-
+   - Geração automática de dados de telemetria (ex.: status e localização) a cada 5 segundos, usando scheduler.
+   - 
+5. **Extras**  
+   - Autênticação de usuário.
+   - Logs de atualização de maquinas.
 ---
 
 ## 🛠 Ferramentas e Tecnologias
@@ -40,6 +43,14 @@ Este projeto é uma API RESTful para gerenciar máquinas industriais, permitindo
 - Proporcionar uma API escalável e robusta para o gerenciamento de máquinas industriais.
 - Permitir atualizações de status e localização em tempo real.
 - Fornecer uma interface para monitoramento de máquinas e telemetria.
+
+---
+
+## 🎯 Proximas atualizações
+
+- Verificação de temperatura e RPM das maquinas.
+- Envio de e-mail para recuperação de senha e validação de e-mail do usuário.
+- Melhoria na simulação da telemetria.
 
 ---
 
