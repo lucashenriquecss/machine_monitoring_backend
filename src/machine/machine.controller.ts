@@ -84,4 +84,40 @@ export class MachineController {
     }
   }
 
+  @ApiOperation({ summary: 'Atualização de maquinários unica' })
+  @ApiResponse({ status: 204, description: 'Atualizado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
+  @Patch(':id')
+  async updateMachine(@Param('id') id: string, @Body() updateMachineDto: UpdateMachineDto) {
+    try {
+      return this.machineService.updateMachine(id, updateMachineDto);
+    } catch (error) {
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: error.stack,
+      }, HttpStatus.FORBIDDEN, {
+        cause: error
+      });
+    }
+  }
+  
+  @ApiOperation({ summary: 'Delete de maquinários' })
+  @ApiResponse({ status: 204, description: 'Deletado com Sucesso' })
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Role(Roles.ADMIN, Roles.COMMON)
+  @Delete(':id')
+  async remove(@Param('id') id: string) {
+    try {
+      return await this.machineService.remove(id);
+    } catch (error) {
+      throw new HttpException({
+        status: HttpStatus.FORBIDDEN,
+        error: error.stack,
+      }, HttpStatus.FORBIDDEN, {
+        cause: error
+      });
+    }
+  }
+
 }
