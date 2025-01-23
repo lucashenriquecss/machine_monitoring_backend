@@ -43,11 +43,11 @@ export class MachineService {
     if (params.name) where['name'] = Like(`%${params.name}%`);
     if (params.status) where['status'] = params.status;
 
-    return await this.machineRepository.find({ where, relations:['logs'] });
+    return await this.machineRepository.find({ where });
   }
 
   async findOne(id: string) {
-    return await this.machineRepository.findOne({ where: { id } });
+    return await this.machineRepository.findOne({ where: { id }, relations:['logs'] });
   }
 
   async update(id: string, updateMachineDto: UpdateMachineDto) {

@@ -36,7 +36,7 @@ export class TelimetryService {
 
     job.start();
 
-    return `Started scheduled telemetry for machine ${machineId}`;
+    return { message: "Sucesso ao iniciar simulação"};
   }
 
   stopMachineSimulation(machineId: string) {
@@ -65,7 +65,7 @@ export class TelimetryService {
 
       
 
-      return `Stopped telemetry simulation for machine ${machineId}`;
+      return  { message: "Sucesso ao parar simulação"};;
     } catch (error) {
       console.error(`Failed to stop simulation for machine ${machineId}:`, error);
       return false;

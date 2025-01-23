@@ -20,8 +20,8 @@ export class TelemetryController {
         try {
             return this.telemetryService.startMachineSimulation(machineId, {
                 location: createMachineDto.location,
-                latitude: createMachineDto.latitude,
-                longitude: createMachineDto.longitude
+                latitude: Number(createMachineDto.latitude),
+                longitude: Number(createMachineDto.longitude)
             });
         } catch (error) {
             throw new HttpException({

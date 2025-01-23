@@ -33,9 +33,9 @@ export class TelimetryGateway implements OnGatewayConnection{
         }
       );
 
-      this.server.emit(`machine-${payload.machineId}`, updatedMachine);
+      this.server.emit(`machine-${payload.machineId}`, payload);
 
-      this.server.emit('telemetry-broadcast', updatedMachine);
+      this.server.emit('telemetry-broadcast', payload);
 
       return { success: true, data: updatedMachine };
     } catch (error) {
@@ -46,6 +46,7 @@ export class TelimetryGateway implements OnGatewayConnection{
 
   @SubscribeMessage('monitor-machine')
   handleMonitorMachine(client: Socket, machineId: string) {
+    console.log(client.id)
     client.join(`machine-${machineId}`);
     return { success: true, message: `Monitoring machine ${machineId}` };
   }
