@@ -87,16 +87,23 @@ Certifique-se de ter as seguintes ferramentas instaladas:
    ```bash
    npm install
 
-3. Crie um arquivo .env naa raiz do projeto:
-
+3. Crie um arquivo .env na raiz do projeto:
+   #Gere uma JWT Secret [https://jwtsecret.com/generate] e coloque em ACCESS_TOKEN_SECRET_KEY
+   Segue o exemplo de configuração
    ```bash
-     DATABASE_URL=seu-database-url
-     JWT_SECRET=sua-chave-secreta
+      DB_HOST="localhost"
+      DB_PORT="5432"
+      DB_USERNAME="login"
+      DB_PASSWORD="senha"
+      DB_DATABASE="nome_da_base"
+      ACCESS_TOKEN_SECRET_KEY="31f6a15c4ddc088d3ab214bd3d98f4c6f8eb246d835d2fe573f17135a130bfad"
+      ACCESS_TOKEN_EXPIRE_TIME=
+
 4. Iniciar servidor
    ```bash
    npm run start:dev
 
 ### Documentação
-http://localhost:3000/docs
+http://localhost:3000/apidocs
 
 

@@ -88,7 +88,7 @@ export class MachineController {
   @ApiResponse({ status: 204, description: 'Atualizado com Sucesso' })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Role(Roles.ADMIN, Roles.COMMON)
-  @Patch(':id')
+  @Patch('r/:id')
   async updateMachine(@Param('id') id: string, @Body() updateMachineDto: UpdateMachineDto) {
     try {
       return this.machineService.updateMachine(id, updateMachineDto);
