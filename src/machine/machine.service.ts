@@ -73,6 +73,13 @@ export class MachineService {
 
     return await this.machineRepository.update(id, updateMachineDto);
   }
+  
+  async updateMachine(id: string, updateMachineDto: UpdateMachineDto) {
+    return await this.machineRepository.update(id, updateMachineDto)
+  }
 
+  async remove(id: string) {
+    return await this.machineRepository.delete(id);
+  }
 
 }
